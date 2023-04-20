@@ -39,3 +39,8 @@
   font-size: inherit;
   border: 0;
 }
+@media (max-width:500px){
+  .pokedex-logo-small{
+    visibility: hidden;
+  }
+}

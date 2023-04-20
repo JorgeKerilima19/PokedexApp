@@ -1,5 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
-import { LogoSearch } from "../helpers/Logos";
+import { LogoPokedex, LogoSearch } from "../helpers/Logos";
 import "../styles/navbar.css";
 
 export const Navbar = () => {
@@ -14,6 +14,7 @@ export const Navbar = () => {
           <button className="form__input-button">Search</button>
         </form>
       </header>
+      <LogoPokedex />
       <Outlet />
     </>
   );

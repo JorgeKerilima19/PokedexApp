@@ -52,3 +52,50 @@ export function LogoSearch() {
     </svg>
   );
 }
+export function LogoPokedex() {
+  return (
+    <svg width={"100%"} height={"100vh"} xmlns="http://www.w3.org/2000/svg">
+      <symbol id="pokedex-logo" viewBox="0 0 67.93 67.93">
+        <rect height="67.93" width="67.93" fill="#e30613" rx="14.89" />
+        <circle fill="white" cx="18.69" cy="20.2" r="10.49" />
+        <circle cx="52.18" cy="6.91" fill="#f39200" r="4.23" />
+        <circle cx="18.69" cy="20.2" fill="#36a9e1" r="7.05" />
+        <circle fill="white" cx="19.78" cy="24.39" r="1.97" />
+        <path
+          d="M67.93 48.86s.75-13.66-34 0c-35 13.71-34 0-34 0v-5.25s.43 14.89 34 0c35.57-13.88 34 0 34 0"
+          fill="#1d1d1b"
+        />
+      </symbol>
+      <symbol id="pokedex-text" viewBox="0 0 134.58 41.83">
+        <text
+          fill="red"
+          fontFamily="Power-Green-Small,Power Green Small"
+          fontSize="42.34"
+          transform="translate(0 36.55)"
+        >
+          Pokedex
+        </text>
+      </symbol>
+      <symbol id="pokedex__full" viewBox="0 0 209 68">
+        <use xlinkHref="#pokedex-logo" x="0" y="0" width={68} height={68} />
+        <use xlinkHref="#pokedex-text" x="70" y="20" width={135} height={42} />
+      </symbol>
+      <use
+        className="pokedex-logo"
+        xlinkHref="#pokedex-logo"
+        x="0"
+        y="0"
+        width={"67.93"}
+        height={"67.93"}
+      />
+      <use
+        className="pokedex-logo-small"
+        xlinkHref="#pokedex__full"
+        x="0"
+        y="0"
+        width={"209"}
+        height={"68"}
+      />
+    </svg>
+  );
+}
