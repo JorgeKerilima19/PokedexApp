@@ -71,19 +71,19 @@ export function LogoPokedex() {
           fill="#1d1d1b"
         />
       </symbol>
-      <symbol id="pokedex-text" viewBox="0 0 134.58 41.83">
+      <symbol id="pokedex-text" viewBox="0 0 150 41.83">
         <text
           fill="red"
           fontFamily="Power-Green-Small,Power Green Small"
-          fontSize="42.34"
-          transform="translate(0 36.55)"
+          fontSize="45"
+          transform="translate(0 35)"
         >
           Pokedex
         </text>
       </symbol>
-      <symbol id="pokedex__full" viewBox="0 0 209 68">
+      <symbol id="pokedex__full" viewBox="0 0 210 68">
         <use xlinkHref="#pokedex-logo" x="0" y="0" width={68} height={68} />
-        <use xlinkHref="#pokedex-text" x="70" y="20" width={135} height={42} />
+        <use xlinkHref="#pokedex-text" x="75" y="20" width={150} height={42} />
       </symbol>
       <use
         className="pokedex-logo"
@@ -98,7 +98,7 @@ export function LogoPokedex() {
         xlinkHref="#pokedex__full"
         x="0"
         y="0"
-        width={"209"}
+        width={"215"}
         height={"68"}
       />
     </svg>
