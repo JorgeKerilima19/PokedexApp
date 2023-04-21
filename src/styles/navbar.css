@@ -9,9 +9,7 @@
   justify-content: center;
   align-items: center;
   padding: 0.5em 0;
-}
-.logo__search-page {
-  height: 8rem;
+  height: 6rem;
 }
 .navbar__form {
   color: black;
@@ -31,6 +29,9 @@
   font-size: 1em;
   padding: 0.2rem 0 0.2rem 0.5rem;
 }
+.pokedex-logo {
+  visibility: hidden;
+}
 .form__input-button {
   background-color: red;
   color: white;
@@ -39,8 +40,11 @@
   font-size: inherit;
   border: 0;
 }
-@media (max-width:500px){
-  .pokedex-logo-small{
+@media (max-width: 500px) {
+  .pokedex-logo {
+    visibility: visible;
+  }
+  .pokedex-logo-small {
     visibility: hidden;
   }
 }
