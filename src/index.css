@@ -18,9 +18,3 @@ a {
   text-decoration: none;
   color: inherit;
 }
-.svg__center{
-  display: grid;
-  width: 100%;
-  place-items: center;
-  padding-left: 6rem;
-}
