@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 interface pokedexContext {
-  a: number;
+  limitedPokemon: any;
 }
 
 export const PokedexContext = createContext<pokedexContext>(

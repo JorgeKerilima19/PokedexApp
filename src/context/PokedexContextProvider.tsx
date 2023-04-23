@@ -1,11 +1,44 @@
 import { PokedexContext } from "./PokedexContext";
+import { useEffect, useState } from "react";
+
+const baseUrl = "https://pokeapi.co/api/v2/";
 
 export const PokedexContextProvider = ({ children }: any) => {
-  const a = 12;
+  //states of API responses
+  const [offset, setOffset] = useState(0);
+  const [limitedPokemon, setLimitedPokemon] = useState<any>([]);
+
+  //general States
+
+  const [loading, setLoading] = useState(false);
+
+  const getLimitedPokemon = async (limit: number) => {
+    const res = await fetch(
+      `${baseUrl}pokemon?limit=${limit}&offset=${offset}`
+    );
+    const data = await res.json();
+
+    const promises = data.results.map(async (pokemon: any) => {
+      const res = await fetch(pokemon.url);
+      const data = await res.json();
+
+      return data;
+    });
+
+    const results = await Promise.all(promises);
+
+    setLimitedPokemon([...limitedPokemon, ...results]);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getLimitedPokemon(50);
+  }, []);
+
   return (
     <PokedexContext.Provider
       value={{
-        a: a,
+        limitedPokemon,
       }}
     >
       {children}
