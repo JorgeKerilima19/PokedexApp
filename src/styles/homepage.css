@@ -1,0 +1,10 @@
+.homepage {
+  min-height: 100vh;
+  width: 100%;
+}
+.homepage__pokemon-container {
+  padding: 2em;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
