@@ -31,6 +31,14 @@ export const PokedexContextProvider = ({ children }: any) => {
     setLoading(false);
   };
 
+  //general Functions
+
+  const capitalizeFirstLetter = (string: string) =>{
+    const capitalized = string.charAt(0).toUpperCase() + string.slice(1);
+
+    return capitalized;
+  };
+
   useEffect(() => {
     getLimitedPokemon(50);
   }, []);
@@ -39,6 +47,7 @@ export const PokedexContextProvider = ({ children }: any) => {
     <PokedexContext.Provider
       value={{
         limitedPokemon,
+        capitalizeFirstLetter,
       }}
     >
       {children}
