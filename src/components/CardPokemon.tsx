@@ -6,7 +6,7 @@ export const CardPokemon = ({ pokemon }: any) => {
   const { capitalizeFirstLetter } = useContext(PokedexContext);
 
   return (
-    <Link className="pokemon-card" to={`/search/pokemon/${pokemon.id}`}>
+    <Link className="pokemon-card" to={`/pokemon/${pokemon.id}`}>
       <div className="pokemon-card__img-container">
         <div className="pokemon-card__background">
           <div className="background-button">
