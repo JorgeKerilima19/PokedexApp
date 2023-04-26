@@ -2,6 +2,8 @@ import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { PokedexContext } from "../context/PokedexContext";
 
+import "../styles/pokemonPage.css";
+
 export const PokemonPage = () => {
   const { capitalizeFirstLetter } = useContext(PokedexContext);
   const [pokemon, setPokemon] = useState<any>({});
@@ -54,7 +56,7 @@ export const PokemonPage = () => {
       .then((data) => {
         setPokemon(data);
       });
-      //Pokemon Description + evolutions
+    //Pokemon Description + evolutions
     getPokemonInfo(id);
   }, [id]);
 
@@ -63,7 +65,7 @@ export const PokemonPage = () => {
   }, [pokemonInfo]);
 
   return (
-    <div>
+    <section className="pokemon-page__main-container">
       <div className="main-container__right-side">
         <span className="pokemon__id">#{pokemon?.id}</span>
         <span className="pokemon__name">
@@ -83,39 +85,43 @@ export const PokemonPage = () => {
           ))}
         </div>
       </div>
-      <article className="left-side__stats">
-        <h3 className="article__title">Stats</h3>
-        <div className="stats-container">
-          <div className="stats-container__item">
-            <span className="stats-item__name">Height: </span>
-            <span className="stats-item_value">
-              {pokemon.height / 10 + " m"}
-            </span>
+      <div className="main-container__left-side">
+        
+        <article className="left-side__description">
+          <h3 className="article__title">Description</h3>
+          <p>{replaceDescriptionChar(pokemonDescription)}</p>
+        </article>
+
+        <article className="left-side__stats">
+          <h3 className="article__title">Stats</h3>
+          <div className="stats-container">
+            <div className="stats-container__item">
+              <span className="stats-item__name">Height: </span>
+              <span className="stats-item_value">
+                {pokemon.height / 10 + " m"}
+              </span>
+            </div>
+            <div className="stats-container__item">
+              <span className="stats-item__name">Weight: </span>
+              <span className="stats-item_value">
+                {pokemon.weight / 10 + " kg"}
+              </span>
+            </div>
+            <>
+              {pokemon.stats?.map((stat: any) => {
+                return (
+                  <div key={stat.stat.name} className="stats-container__item">
+                    <span className="stats-item__name">
+                      {capitalizeFirstLetter(stat.stat.name) + ": "}
+                    </span>
+                    <span className="stats-item_value">{stat.base_stat}</span>
+                  </div>
+                );
+              })}
+            </>
           </div>
-          <div className="stats-container__item">
-            <span className="stats-item__name">Weight: </span>
-            <span className="stats-item_value">
-              {pokemon.weight / 10 + " kg"}
-            </span>
-          </div>
-          <>
-            {pokemon.stats?.map((stat: any) => {
-              return (
-                <div key={stat.stat.name} className="stats-container__item">
-                  <span className="stats-item__name">
-                    {capitalizeFirstLetter(stat.stat.name) + ": "}
-                  </span>
-                  <span className="stats-item_value">{stat.base_stat}</span>
-                </div>
-              );
-            })}
-          </>
-        </div>
-      </article>
-      <p>{replaceDescriptionChar(pokemonDescription)}</p>
-      <button onClick={nextPokemon}>Nexxt</button>
-      <button onClick={previousPokemon}>previous</button>
-      <span>{pokemonInfo.name}</span>
-    </div>
+        </article>
+      </div>
+    </section>
   );
 };
