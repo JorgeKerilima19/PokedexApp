@@ -4,7 +4,6 @@ import { CardPokemon } from "./CardPokemon";
 
 export const PokemonList = () => {
   const { limitedPokemon } = useContext(PokedexContext);
-  console.log(limitedPokemon);
 
   return (
     <div className="homepage__pokemon-container">

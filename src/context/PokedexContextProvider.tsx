@@ -33,7 +33,7 @@ export const PokedexContextProvider = ({ children }: any) => {
 
   //general Functions
 
-  const capitalizeFirstLetter = (string: string) =>{
+  const capitalizeFirstLetter = (string: string="No data") =>{
     const capitalized = string.charAt(0).toUpperCase() + string.slice(1);
 
     return capitalized;
