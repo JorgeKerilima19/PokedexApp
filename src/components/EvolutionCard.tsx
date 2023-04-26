@@ -15,7 +15,7 @@ export const EvolutionCard = ({ element }: any) => {
   });
 
   return (
-    <Link className="evolution-container__card" to={"/"}>
+    <Link className="evolution-container__card" to={`/pokemon/${pokemon?.id}`}>
       <img
         src={pokemon?.sprites?.other["official-artwork"]?.front_default}
         alt=""
