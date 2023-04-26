@@ -10,8 +10,6 @@ export const PokedexContextProvider = ({ children }: any) => {
 
   //general States
 
-  const [loading, setLoading] = useState(false);
-
   const getLimitedPokemon = async (limit: number) => {
     const res = await fetch(
       `${baseUrl}pokemon?limit=${limit}&offset=${offset}`
@@ -28,7 +26,6 @@ export const PokedexContextProvider = ({ children }: any) => {
     const results = await Promise.all(promises);
 
     setLimitedPokemon([...limitedPokemon, ...results]);
-    setLoading(false);
   };
 
   //general Functions

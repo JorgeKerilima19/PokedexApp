@@ -61,3 +61,37 @@ article[class^="left-side__"] {
 .stats-item_value {
   padding-left: 1rem;
 }
+.main-container__evolutions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  padding-top: 2em;
+}
+.evolution-title {
+  font-size: 1.8em;
+}
+.evolution-container {
+  width: 90%;
+  display: flex;
+  gap: 2em;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+}
+.evolution-container__card {
+  background-color: hsl(0, 0%, 88%);
+  padding: 1em;
+  width: max(25%, 15rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+.evolution-image {
+  width: 80%;
+}
+.evolution-name {
+  font-size: 1.2em;
+}

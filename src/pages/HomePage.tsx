@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { PokemonList } from "../components";
 import "../styles/homepage.css";
 
