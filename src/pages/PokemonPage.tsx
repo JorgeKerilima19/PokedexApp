@@ -12,6 +12,9 @@ export const PokemonPage = () => {
     navigate(`/pokemon/${nextId}`);
   };
   const previousPokemon = () => {
+    if (parseInt(id) < 2) {
+      return;
+    }
     const previousId = parseInt(id) - 1;
     navigate(`/pokemon/${previousId}`);
   };
@@ -27,8 +30,8 @@ export const PokemonPage = () => {
   return (
     <div>
       PokemonPage {pokemon.name}
-      <button onClick={nextPokemon}>Next</button>
       <button onClick={previousPokemon}>previous</button>
+      <button onClick={nextPokemon}>Next</button>
     </div>
   );
 };
