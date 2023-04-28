@@ -95,3 +95,22 @@ article[class^="left-side__"] {
 .evolution-name {
   font-size: 1.2em;
 }
+
+[class^="pokemon-button__change"] {
+  position: fixed;
+  top: 50%;
+  height: 4em;
+  width: 2em;
+  border: thin solid black;
+  font-size: 1.3em;
+  transition: 0.3s;
+}
+[class^="pokemon-button__change"]:hover{
+  transform: scale(1.1);
+}
+.pokemon-button__change-left {
+  right: 0.5rem;
+}
+.pokemon-button__change-right {
+  left: 0.5rem;
+}

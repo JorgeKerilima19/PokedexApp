@@ -14,7 +14,7 @@ export const Navbar = () => {
           <button className="form__input-button">Search</button>
         </form>
       </header>
-      <main>
+      <main className="main">
         <Outlet />
       </main>
     </>

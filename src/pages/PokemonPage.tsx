@@ -2,8 +2,9 @@ import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { PokedexContext } from "../context/PokedexContext";
 
-import "../styles/pokemonPage.css";
 import { EvolutionCard } from "../components/EvolutionCard";
+import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
+import "../styles/pokemonPage.css";
 
 export const PokemonPage = () => {
   const { capitalizeFirstLetter } = useContext(PokedexContext);
@@ -43,7 +44,7 @@ export const PokemonPage = () => {
         setPokemonInfo(data);
       });
   };
-  const getDescription = async (el: any) => {
+  const getDescription = async () => {
     await getPokemonInfo(id);
     const description = pokemonInfo.flavor_text_entries?.find(
       (el: any) => el.language["name"] === "en"
@@ -84,7 +85,7 @@ export const PokemonPage = () => {
   }, [id]);
 
   useEffect(() => {
-    getDescription(id);
+    getDescription();
 
     getPokemonEvolutions(id).catch((err) => {
       console.error("Server not responding properly");
@@ -93,8 +94,14 @@ export const PokemonPage = () => {
 
   return (
     <>
-      <button onClick={nextPokemon}>Next</button>
-      <button onClick={previousPokemon}>previousPokemon</button>
+      <VscChevronRight
+        onClick={previousPokemon}
+        className="pokemon-button__change-left"
+      />
+      <VscChevronLeft
+        onClick={nextPokemon}
+        className="pokemon-button__change-right"
+      />
       <section className="pokemon-page__main-container">
         <div className="main-container__right-side">
           <span className="pokemon__id">#{pokemon?.id}</span>
