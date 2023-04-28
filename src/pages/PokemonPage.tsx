@@ -95,12 +95,12 @@ export const PokemonPage = () => {
   return (
     <>
       <VscChevronRight
-        onClick={previousPokemon}
-        className="pokemon-button__change-left"
-      />
-      <VscChevronLeft
         onClick={nextPokemon}
         className="pokemon-button__change-right"
+      />
+      <VscChevronLeft
+        onClick={previousPokemon}
+        className="pokemon-button__change-left"
       />
       <section className="pokemon-page__main-container">
         <div className="main-container__right-side">

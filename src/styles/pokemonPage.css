@@ -105,12 +105,12 @@ article[class^="left-side__"] {
   font-size: 1.3em;
   transition: 0.3s;
 }
-[class^="pokemon-button__change"]:hover{
+[class^="pokemon-button__change"]:hover {
   transform: scale(1.1);
 }
-.pokemon-button__change-left {
+.pokemon-button__change-right {
   right: 0.5rem;
 }
-.pokemon-button__change-right {
+.pokemon-button__change-left {
   left: 0.5rem;
 }
