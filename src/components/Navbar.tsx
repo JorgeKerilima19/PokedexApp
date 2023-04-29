@@ -10,7 +10,11 @@ export const Navbar = () => {
           <LogoPokedex />
         </Link>
         <form className="navbar__form">
-          <input type="text" className="form__input" />
+          <input
+            type="text"
+            className="form__input"
+            placeholder="Type something"
+          />
           <button className="form__input-button">Search</button>
         </form>
       </header>

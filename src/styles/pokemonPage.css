@@ -6,6 +6,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 2em;
 }
 .main-container__right-side {
   min-height: 20rem;
