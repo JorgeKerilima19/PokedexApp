@@ -1,6 +1,8 @@
 import { PokedexContext } from "./PokedexContext";
 import { useEffect, useState } from "react";
 
+import { useForm } from "../customHooks/useForm";
+
 const baseUrl = "https://pokeapi.co/api/v2/";
 
 export const PokedexContextProvider = ({ children }: any) => {
@@ -8,7 +10,11 @@ export const PokedexContextProvider = ({ children }: any) => {
   const [offset, setOffset] = useState(0);
   const [limitedPokemon, setLimitedPokemon] = useState<any>([]);
 
-  //general States
+  //custom hood states
+
+  const { valueSearch, onInputChange, onResetForm } = useForm({
+    valueSearch: "",
+  });
 
   const getLimitedPokemon = async (limit: number) => {
     const res = await fetch(
@@ -30,7 +36,7 @@ export const PokedexContextProvider = ({ children }: any) => {
 
   //general Functions
 
-  const capitalizeFirstLetter = (string: string="No data") =>{
+  const capitalizeFirstLetter = (string: string = "No data") => {
     const capitalized = string.charAt(0).toUpperCase() + string.slice(1);
 
     return capitalized;
