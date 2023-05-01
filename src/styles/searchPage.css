@@ -1,0 +1,9 @@
+.pokedex__pokemon-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+  padding: 2rem;
+  margin: auto;
+  position: relative;
+}
