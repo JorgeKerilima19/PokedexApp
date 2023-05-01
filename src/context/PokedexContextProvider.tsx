@@ -51,6 +51,9 @@ export const PokedexContextProvider = ({ children }: any) => {
       value={{
         limitedPokemon,
         capitalizeFirstLetter,
+        valueSearch,
+        onInputChange,
+        onResetForm,
       }}
     >
       {children}
