@@ -125,7 +125,11 @@ export const PokemonPage = () => {
         <div className="main-container__left-side">
           <article className="left-side__description">
             <h3 className="article__title">Description</h3>
-            <p>{replaceDescriptionChar(pokemonDescription)}</p>
+            <p>
+              {replaceDescriptionChar(
+                pokemonDescription ? pokemonDescription : "No Description given"
+              )}
+            </p>
           </article>
 
           <article className="left-side__stats">
