@@ -7,12 +7,13 @@ import { CardPokemon } from "../components/CardPokemon";
 import "../styles/searchPage.css"
 
 export const SearchPage = () => {
-  const { limitedPokemon } = useContext(PokedexContext);
+  const { limitedPokemon, allPokemon } = useContext(PokedexContext);
   const location = useLocation();
 
   const searchedPokemon = limitedPokemon.filter((pokemon: any) =>
     pokemon.name.includes(location.state?.toLowerCase())
   );
+console.log(allPokemon);
 
   return (
     <>
