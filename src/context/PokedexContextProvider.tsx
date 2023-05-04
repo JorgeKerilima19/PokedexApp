@@ -17,6 +17,7 @@ export const PokedexContextProvider = ({ children }: any) => {
     valueSearch: "",
   });
 
+  // fetching pokemon
   const getLimitedPokemon = async (limit: number) => {
     const res = await fetch(
       `${baseUrl}pokemon?limit=${limit}&offset=${offset}`
@@ -58,6 +59,9 @@ export const PokedexContextProvider = ({ children }: any) => {
       console.log(err);
     }
   }
+  function getMorePokemon() {
+    setOffset(offset + 50);
+  }
 
   //general Functions
 
@@ -69,7 +73,7 @@ export const PokedexContextProvider = ({ children }: any) => {
 
   useEffect(() => {
     getLimitedPokemon(50);
-  }, []);
+  }, [offset]);
   useEffect(() => {
     getAllPokemon();
   }, []);
@@ -78,6 +82,7 @@ export const PokedexContextProvider = ({ children }: any) => {
       value={{
         limitedPokemon,
         allPokemon,
+        getMorePokemon,
         capitalizeFirstLetter,
         valueSearch,
         onInputChange,

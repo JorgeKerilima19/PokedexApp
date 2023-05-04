@@ -1,8 +1,9 @@
 import { createContext } from "react";
 
 interface pokedexContext {
-  limitedPokemon: any;
+  limitedPokemon: any[];
   allPokemon: any[];
+  getMorePokemon: any;
   capitalizeFirstLetter: (pokemon: string) => string;
   valueSearch: any;
   onInputChange: any;
