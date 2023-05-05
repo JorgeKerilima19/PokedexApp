@@ -3,13 +3,25 @@ import { PokedexContext } from "../context/PokedexContext";
 import { CardPokemon } from "./CardPokemon";
 
 export const PokemonList = () => {
-  const { limitedPokemon } = useContext(PokedexContext);
+  const { limitedPokemon, filteredPokemon } = useContext(PokedexContext);
 
   return (
     <div className="homepage__pokemon-container">
-      {limitedPokemon.map((pokemon: any, index:number) => (
-        <CardPokemon key={index} pokemon={pokemon} />
-      ))}
+      <>
+        {filteredPokemon.length ? (
+          <>
+            {filteredPokemon.map((pokemon, index) => (
+              <CardPokemon pokemon={pokemon} key={index} />
+            ))}
+          </>
+        ) : (
+          <>
+            {limitedPokemon.map((pokemon, index) => (
+              <CardPokemon pokemon={pokemon} key={index} />
+            ))}
+          </>
+        )}
+      </>
     </div>
   );
 };

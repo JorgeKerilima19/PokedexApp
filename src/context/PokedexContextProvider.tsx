@@ -1,5 +1,5 @@
 import { PokedexContext } from "./PokedexContext";
-import { useEffect, useState } from "react";
+import { useEffect, useState, ChangeEvent } from "react";
 
 import { useForm } from "../customHooks/useForm";
 
@@ -10,6 +10,27 @@ export const PokedexContextProvider = ({ children }: any) => {
   const [offset, setOffset] = useState(0);
   const [limitedPokemon, setLimitedPokemon] = useState<any>([]);
   const [allPokemon, setAllPokemon] = useState<any>([]);
+  const [filteredPokemon, setFilteredPokemon] = useState<any[]>([]);
+  const [typeSelected, setTypeSelected] = useState({
+    bug: false,
+    dark: false,
+    dragon: false,
+    electric: false,
+    fairy: false,
+    fire: false,
+    flying: false,
+    fighting: false,
+    ghost: false,
+    grass: false,
+    ground: false,
+    ice: false,
+    normal: false,
+    poison: false,
+    psychic: false,
+    rock: false,
+    steel: false,
+    water: false,
+  });
 
   //custom hood states
 
@@ -71,6 +92,26 @@ export const PokedexContextProvider = ({ children }: any) => {
     return capitalized;
   };
 
+  //Filter types bar function
+
+  const handleCheckbox = (e: ChangeEvent<HTMLInputElement>): void => {
+    setTypeSelected({ ...typeSelected, [e.target.name]: e.target.checked });
+    if (e.target.checked) {
+      const filteredResults = allPokemon.filter((pokemon: any) =>
+        pokemon.types.map((type: any) => type.type.name).includes(e.target.name)
+      );
+      setFilteredPokemon([...filteredPokemon, ...filteredResults]);
+    } else {
+      const filteredResults = filteredPokemon.filter(
+        (pokemon) =>
+          !pokemon.types
+            .map((type: any) => type.type.name)
+            .includes(e.target.name)
+      );
+      setFilteredPokemon([...filteredResults]);
+    }
+  };
+
   useEffect(() => {
     getLimitedPokemon(50);
   }, [offset]);
@@ -82,11 +123,13 @@ export const PokedexContextProvider = ({ children }: any) => {
       value={{
         limitedPokemon,
         allPokemon,
+        filteredPokemon,
         getMorePokemon,
         capitalizeFirstLetter,
         valueSearch,
         onInputChange,
         onResetForm,
+        handleCheckbox,
       }}
     >
       {children}
