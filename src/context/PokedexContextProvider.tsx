@@ -60,7 +60,7 @@ export const PokedexContextProvider = ({ children }: any) => {
   async function getAllPokemon() {
     try {
       const res = await fetch(
-        `https://pokeapi.co/api/v2/pokemon?limit=100000$offset=0`
+        `https://pokeapi.co/api/v2/pokemon?limit=905$offset=0`
       );
       const data = await res.json();
 

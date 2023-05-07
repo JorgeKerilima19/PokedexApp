@@ -10,11 +10,10 @@ export const PokemonPage = () => {
   const { capitalizeFirstLetter } = useContext(PokedexContext);
 
   const [pokemon, setPokemon] = useState<any>({});
-  const [pokemonInfo, setPokemonInfo] = useState<any>("");
   const [pokemonDescription, setPokemonDescription] = useState<string>("");
   const [pokemonEvolutions, setPokemonEvolutions] = useState<string[]>([]);
 
-  const { id = "1" } = useParams<{ id?: string }>();
+  const { id }: any = useParams<{ id?: string }>();
   const navigate = useNavigate();
 
   //Pokemon handlers
@@ -37,64 +36,59 @@ export const PokemonPage = () => {
 
   //fetching info functions
 
-  const getPokemonInfo = async (id: string) => {
-    fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
+  const getPokemon = async (id: string | number) => {
+    fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
       .then((response) => response.json())
       .then((data) => {
-        setPokemonInfo(data);
+        setPokemon(data);
       });
   };
+
+  const getPokemonInfo = async (id: string | number) => {
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon-species/${id}`
+    );
+    const data = await response.json();
+    return data;
+  };
+
+  const getPokemonEvolutions = async (url: string) => {
+    const response = await fetch(url);
+    const data = await response.json();
+    let pokemonEvoArray = [];
+    pokemonEvoArray.push(data.chain.species.name);
+
+    if (data.chain.evolves_to.length > 0) {
+      data.chain.evolves_to.forEach((el: any) => {
+        pokemonEvoArray.push(el.species.name);
+      });
+
+      if (data.chain.evolves_to[0].evolves_to.length > 0) {
+        pokemonEvoArray.push(
+          data.chain.evolves_to[0].evolves_to[0].species.name
+        );
+      }
+    }
+
+    setPokemonEvolutions(pokemonEvoArray);
+  };
+
   const getDescription = async () => {
-    await getPokemonInfo(id);
+    const pokemonInfo = await getPokemonInfo(id);
     const description = pokemonInfo.flavor_text_entries?.find(
       (el: any) => el.language["name"] === "en"
     )?.flavor_text;
     if (description) {
       setPokemonDescription(description);
     }
-  };
-  const getPokemonEvolutions = async (id: string) => {
-    await getPokemonInfo(id);
-    await fetch(pokemonInfo?.evolution_chain?.url)
-      .then((res) => res.json())
-      .then((el) => {
-        let pokemonEvoArray = [];
-
-        pokemonEvoArray.push(el.chain.species.name);
-
-        if (el.chain.evolves_to.length > 0) {
-          el.chain.evolves_to.forEach((el: any) => {
-            pokemonEvoArray.push(el.species.name);
-          });
-
-          if (el.chain.evolves_to[0].evolves_to.length > 0) {
-            pokemonEvoArray.push(
-              el.chain.evolves_to[0].evolves_to[0].species.name
-            );
-          }
-        }
-
-        setPokemonEvolutions(pokemonEvoArray);
-      });
+    await getPokemonEvolutions(pokemonInfo?.evolution_chain?.url);
   };
 
   useEffect(() => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setPokemon(data);
-      });
+    getPokemon(id);
     //Pokemon Description + evolutions
-    getPokemonInfo(id);
-  }, [id]);
-
-  useEffect(() => {
     getDescription();
-
-    getPokemonEvolutions(id).catch((err) => {
-      console.error("Server not responding properly");
-    });
-  }, [pokemonInfo]);
+  }, [id]);
 
   return (
     <>
