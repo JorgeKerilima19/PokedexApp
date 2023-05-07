@@ -61,13 +61,18 @@ export const PokemonPage = () => {
         let pokemonEvoArray = [];
 
         pokemonEvoArray.push(el.chain.species.name);
-        if (el.chain.evolves_to.length > 0) {
-          pokemonEvoArray.push(el.chain.evolves_to[0].species.name);
+        if (el.chain.evolves_to.length > 1) {
+          el.chain.evolves_to.map((pokemon: any) => {
+          });
+        } else {
+          if (el.chain.evolves_to.length > 0) {
+            pokemonEvoArray.push(el.chain.evolves_to[0].species.name);
 
-          if (el.chain.evolves_to[0].evolves_to.length > 0) {
-            pokemonEvoArray.push(
-              el.chain.evolves_to[0].evolves_to[0].species.name
-            );
+            if (el.chain.evolves_to[0].evolves_to.length > 0) {
+              pokemonEvoArray.push(
+                el.chain.evolves_to[0].evolves_to[0].species.name
+              );
+            }
           }
         }
         setPokemonEvolutions(pokemonEvoArray);
