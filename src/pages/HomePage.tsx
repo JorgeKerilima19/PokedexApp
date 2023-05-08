@@ -1,23 +1,22 @@
+import { PokemonList } from "../components";
 import { useContext } from "react";
+
 import { PokedexContext } from "../context/PokedexContext";
+import { FilterBar } from "../components/FilterBar";
 
 import "../styles/homepage.css";
 
 export const HomePage = () => {
-  const { a } = useContext(PokedexContext);
+  const { getMorePokemon } = useContext(PokedexContext);
+
   return (
     <section className="homepage container">
-      <div className="homepage__pokemon-container">
-        <article className="pokemon-card__small">
-          <img src="" alt="No Loaded" />
-          <div className="pokemon-card__small-description">
-            <h4>Pokemon Name</h4>
-            <div className="pokemon-card__small-description__types">
-              <span>Type1</span>
-              <span>Type2</span>
-            </div>
-          </div>
-        </article>
+      <FilterBar />
+      <PokemonList />
+      <div className="load-more-container">
+        <button onClick={getMorePokemon} className="load-more">
+          Load More
+        </button>
       </div>
     </section>
   );

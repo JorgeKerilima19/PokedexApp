@@ -1,7 +1,15 @@
-import { createContext } from "react";
+import { createContext, ChangeEvent } from "react";
 
 interface pokedexContext {
-  a: number;
+  limitedPokemon: any[];
+  allPokemon: any[];
+  filteredPokemon: any[];
+  getMorePokemon: any;
+  capitalizeFirstLetter: (pokemon: string) => string;
+  valueSearch: any;
+  onInputChange: any;
+  onResetForm: any;
+  handleCheckbox: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const PokedexContext = createContext<pokedexContext>(

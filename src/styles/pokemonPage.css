@@ -1,0 +1,117 @@
+.pokemon-page__main-container {
+  width: 95%;
+  min-height: 20rem;
+  margin: 2em auto;
+  padding: 2em 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+}
+.main-container__right-side {
+  min-height: 20rem;
+  width: max(45%, 25rem);
+}
+.pokemon__id {
+  font-size: 2.5em;
+  font-weight: 500;
+}
+.pokemon__name {
+  font-size: 1.8em;
+  font-weight: 400;
+  text-decoration: underline;
+  text-decoration-thickness: 0.2rem;
+}
+.pokemon__img {
+  width: 90%;
+}
+.main-container__left-side {
+  min-height: 20rem;
+  width: max(45%, 25rem);
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.article__title {
+  font-size: 1.2em;
+  margin-bottom: 0.5rem;
+}
+article[class^="left-side__"] {
+  margin-bottom: 2em;
+}
+.stats-container {
+  background-color: hsl(160, 91%, 40%);
+  border-radius: 1rem;
+  min-height: 8rem;
+  display: flex;
+  gap: 2em;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+}
+.stats-container__item {
+  font-size: 1.15em;
+  padding: 0 0.8rem;
+  display: flex;
+  min-width: 45%;
+  flex-direction: column;
+}
+.stats-item__name {
+  font-weight: 500;
+}
+.stats-item_value {
+  padding-left: 1rem;
+}
+.main-container__evolutions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  padding-top: 2em;
+}
+.evolution-title {
+  font-size: 1.8em;
+}
+.evolution-container {
+  width: 90%;
+  display: flex;
+  gap: 2em;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+}
+.evolution-container__card {
+  background-color: hsl(0, 0%, 88%);
+  padding: 1em;
+  width: max(25%, 15rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+.evolution-image {
+  width: 80%;
+}
+.evolution-name {
+  font-size: 1.2em;
+}
+
+[class^="pokemon-button__change"] {
+  position: fixed;
+  top: 50%;
+  height: 4em;
+  width: 2em;
+  border: thin solid black;
+  font-size: 1.3em;
+  transition: 0.3s;
+}
+[class^="pokemon-button__change"]:hover {
+  transform: scale(1.1);
+}
+.pokemon-button__change-right {
+  right: 0.5rem;
+}
+.pokemon-button__change-left {
+  left: 0.5rem;
+}
