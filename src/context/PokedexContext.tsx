@@ -6,6 +6,7 @@ interface pokedexContext {
   filteredPokemon: any[];
   getMorePokemon: any;
   capitalizeFirstLetter: (pokemon: string) => string;
+  scrollUp: () => void;
   valueSearch: any;
   onInputChange: any;
   onResetForm: any;

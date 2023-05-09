@@ -5,6 +5,7 @@ import { PokedexContext } from "../context/PokedexContext";
 import { FilterBar } from "../components/FilterBar";
 
 import "../styles/homepage.css";
+import BackToTop from "../components/BackToTop";
 
 export const HomePage = () => {
   const { getMorePokemon } = useContext(PokedexContext);
@@ -18,6 +19,7 @@ export const HomePage = () => {
           Load More
         </button>
       </div>
+      <BackToTop />
     </section>
   );
 };

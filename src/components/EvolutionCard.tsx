@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const EvolutionCard = ({ element, children }: Props) => {
-  const { capitalizeFirstLetter } = useContext(PokedexContext);
+  const { capitalizeFirstLetter, scrollUp } = useContext(PokedexContext);
   const [pokemon, setPokemon] = useState<any>();
 
   const getPokemon = async (id: string | number) => {
@@ -25,6 +25,7 @@ export const EvolutionCard = ({ element, children }: Props) => {
     <>
       <Link
         className="evolution-container__card"
+        onClick={scrollUp}
         to={`/pokemon/${pokemon?.id}`}
       >
         <img

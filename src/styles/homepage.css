@@ -237,3 +237,10 @@
   color: white;
   padding-left: 1em;
 }
+.back-to-top{
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 4rem;
+  color: var(--quaternary-color);
+}

@@ -10,6 +10,7 @@ import {
 } from "react-icons/vsc";
 
 import "../styles/pokemonPage.css";
+import BackToTop from "../components/BackToTop";
 
 export const PokemonPage = () => {
   const { capitalizeFirstLetter } = useContext(PokedexContext);
@@ -180,6 +181,7 @@ export const PokemonPage = () => {
           </ul>
         </article>
       </section>
+      <BackToTop />
     </>
   );
 };

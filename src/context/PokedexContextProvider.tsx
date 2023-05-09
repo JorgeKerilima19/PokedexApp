@@ -92,6 +92,13 @@ export const PokedexContextProvider = ({ children }: any) => {
     return capitalized;
   };
 
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   //Filter types bar function
 
   const handleCheckbox = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -126,6 +133,7 @@ export const PokedexContextProvider = ({ children }: any) => {
         filteredPokemon,
         getMorePokemon,
         capitalizeFirstLetter,
+        scrollUp,
         valueSearch,
         onInputChange,
         onResetForm,
