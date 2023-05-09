@@ -2,7 +2,12 @@ import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { PokedexContext } from "../context/PokedexContext";
 
-export const EvolutionCard = ({ element }: any) => {
+type Props = {
+  element: any;
+  children: React.ReactNode;
+};
+
+export const EvolutionCard = ({ element, children }: Props) => {
   const { capitalizeFirstLetter } = useContext(PokedexContext);
   const [pokemon, setPokemon] = useState<any>();
 
@@ -17,15 +22,21 @@ export const EvolutionCard = ({ element }: any) => {
   }, []);
 
   return (
-    <Link className="evolution-container__card" to={`/pokemon/${pokemon?.id}`}>
-      <img
-        src={pokemon?.sprites?.other["official-artwork"]?.front_default}
-        alt=""
-        className="evolution-image"
-      />
-      <span className="evolution-name">
-        {capitalizeFirstLetter(pokemon?.name)}
-      </span>
-    </Link>
+    <>
+      <Link
+        className="evolution-container__card"
+        to={`/pokemon/${pokemon?.id}`}
+      >
+        <img
+          src={pokemon?.sprites?.other["official-artwork"]?.front_default}
+          alt=""
+          className="evolution-image"
+        />
+        <span className="evolution-name">
+          {capitalizeFirstLetter(pokemon?.name)}
+        </span>
+      </Link>
+      <div>{children}</div>
+    </>
   );
 };

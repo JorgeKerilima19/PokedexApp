@@ -3,7 +3,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import { PokedexContext } from "../context/PokedexContext";
 
 import { EvolutionCard } from "../components/EvolutionCard";
-import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
+import {
+  VscChevronLeft,
+  VscChevronRight,
+  VscTriangleRight,
+} from "react-icons/vsc";
+
 import "../styles/pokemonPage.css";
 
 export const PokemonPage = () => {
@@ -163,8 +168,14 @@ export const PokemonPage = () => {
         <article className="main-container__evolutions">
           <h3 className="evolution-title">Evolutions</h3>
           <ul className="evolution-container">
-            {pokemonEvolutions?.map((el: any) => {
-              return <EvolutionCard key={el} element={el} />;
+            {pokemonEvolutions?.map((el: any, index: number) => {
+              return (
+                <EvolutionCard key={el} element={el}>
+                  {index < pokemonEvolutions.length - 1 && (
+                    <VscTriangleRight></VscTriangleRight>
+                  )}
+                </EvolutionCard>
+              );
             })}
           </ul>
         </article>
